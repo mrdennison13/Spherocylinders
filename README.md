@@ -1,11 +1,11 @@
 # Spherocylinders
 Virial coefficients for hard spherocylinders
-
+ 
 Files:
-Bn_L5d0_D1d0-norm.dat     -> nth virial data in tab deliminated format
-Bn_L5d0_D1d0-norm-csv.dat -> nth virial data in comma separated format
-process_virials.ipynb     -> Notebook to analyse the data
-data_B5_Cc.dat            -> Contains the EOS data, for both the isotropic and nematic phases
+- Bn_L5d0_D1d0-norm.dat     -> nth virial data in tab deliminated format
+- Bn_L5d0_D1d0-norm-csv.dat -> nth virial data in comma separated format
+- process_virials.ipynb     -> Notebook to analyse the data
+- data_B5_Cc.dat            -> Contains the EOS data, for both the isotropic and nematic phases
 
 The virial files contain:
 1) index
