@@ -25,6 +25,13 @@ class particle:
 
 
     def __init__(self, shape = 'sphere', dim=(1.0)):
+        """Initialize the particle:
+        
+        Inputs: 
+        - shape: particle shape, default is a sphere
+        - dim:   particle dimensions, default is 1.0 for each
+        """
+        
         import sys
         self.n_vals = 1
         self.S2_out = np.array(0.0)
@@ -149,6 +156,7 @@ class particle:
 
 
     def restore_virial(self):
+        """Restore the values of the virial coefficients to before the last calculation"""
         import copy
         self.B = copy.deepcopy(self.B_old)  #self.B.copy()
         self.iterations_tot = copy.deepcopy(self.iterations_tot_old)  #self.iterations_tot.copy()
@@ -156,7 +164,23 @@ class particle:
 
     
 
-    def calc_virial(self, orders=[2], iterations=[1000000], n_vals_in = 1, norm=True, timing=False):
+    def calc_virial(self, orders=[2], iterations=[1000000], n_vals_in = "iso", norm=True, timing=False):
+        """Calculate the virial coefficients for the particle
+        Input:
+        - orders:     list or array of integers. The orders to be calculated (default is the second order virial)
+
+        - iterations: list or array of integers. The number of MC steps, default is 1,000,000. Can be either a single value or a list/array of the same length as orders, to define a number of steps for each order virial individually
+
+        - n_vals_in:  The number of S_nem values to calculate the virial for. Default is 'iso', which will return the isotropic virial coefficient. 
+        0 or 'iso'     -> isotropic virial
+        1 or 'nem'     -> nematic virial (S_nem = 1)
+        n_vals_in > 1  -> will calculate for n_vals_in S_nem values, equally spaced values between 0 and 1
+        array or list  -> will calculate for the given S_nem values
+
+        - norm:       Boolean, normalizes the virials by B2^(n-1), default is True.
+   
+        - timing:     Boolean, return the time taken for each virial calculation.
+        """
         import sys
         import copy
         
